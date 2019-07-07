@@ -135,6 +135,9 @@ loadSystemCell()
                                     console.log(signedTx)
                                     core.rpc.sendTransaction(signedTx)
                                         .then(console.log)
+                                        .catch(err => {
+                                            console.log(err)
+                                        })
                                 })
                         }
                     })
