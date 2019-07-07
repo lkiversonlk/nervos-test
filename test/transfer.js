@@ -118,17 +118,15 @@ loadSystemCell()
                                 outputs.push(changeOutput)
                             }
 
-                            const fs = require('fs')
-                            const data = '0x' + (fs.readFileSync('./verify')).toString('hex')
-
-                            console.log(data.length)
+                            // const fs = require('fs')
+                            // const data = (fs.readFileSync('./verify')).toString('hex')
                             outputs.push({
                                 capacity: capacity.toString(),
                                 lock: {
                                     codeHash: ENCRYPT_CODE_HASH,
                                     args: [dstIdentifier]
                                 },
-                                data: data
+                                data: '0x000000000000000001'
                             })
 
                             const witnesses = []
@@ -145,10 +143,11 @@ loadSystemCell()
                                 witnesses
                             }
 
-                            // console.log(JSON.stringify(tx, null, 2))
+                            console.log(JSON.stringify(tx, null, 2))
 
                             core.signTransaction(MyAddr)(tx)
                                 .then(signedTx => {
+                                    console.log(signedTx)
                                     core.rpc.sendTransaction(signedTx)
                                         .then(console.log)
                                         .catch(err => {
