@@ -80,7 +80,7 @@ loadSystemCell()
 
                             let current_capacity = 0
                             const inputs = []
-                            for (let i = 0; i < unspentCells.length; i ++) {
+                            for (let i = unspentCells.length - 1; i >= 0; i --) {
                                 const cell = unspentCells[i]
                                 inputs.push({
                                     previousOutput: cell.outPoint,
@@ -108,7 +108,7 @@ loadSystemCell()
                                 data: '0x'
                             }
                             if (current_capacity > capacity) {
-                                changeOutput.capacity = (current_capacity - capacity - 200000).toString()
+                                changeOutput.capacity = (current_capacity - capacity).toString()
                             }
 
                             const outputs = []
