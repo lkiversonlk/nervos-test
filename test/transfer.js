@@ -108,7 +108,7 @@ loadSystemCell()
                                 data: '0x'
                             }
                             if (current_capacity > capacity) {
-                                changeOutput.capacity = (current_capacity - capacity).toString()
+                                changeOutput.capacity = (current_capacity - capacity - 200000).toString()
                             }
 
                             const outputs = []
