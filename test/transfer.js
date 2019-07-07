@@ -32,7 +32,7 @@ loadSystemCell()
 
         const MyAddr = core.generateAddress(privateKey)
 
-        // console.log(MyAddr)
+        console.log(MyAddr)
 
         const script = {
             codeHash: ENCRYPT_CODE_HASH,
@@ -75,7 +75,7 @@ loadSystemCell()
 
 
                             const capacity = 1000000000
-                            const dstIdentifier = `0x${MyAddr.identifier}`
+                            const dstIdentifier = `0x${MyAddr.idenfitier}`
                             console.log(dstIdentifier)
 
                             let current_capacity = 0
