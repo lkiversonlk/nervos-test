@@ -54,7 +54,7 @@ loadSystemCell()
                         if (start > end) {
                             return
                         } else {
-                            return core.rpc.getCellByLockHash(lockHash, start, end)
+                            return core.rpc.getCellsByLockHash(lockHash, start, end)
                                 .then(cells => {
                                     if (cells.length) {
                                         console.log(`load ${start} to ${end}, with ${cells.length} cells`)
