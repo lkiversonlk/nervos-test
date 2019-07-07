@@ -74,7 +74,7 @@ loadSystemCell()
                             // now we have the unspent cells
 
 
-                            const capacity = 10000000
+                            const capacity = 1000000000
                             const dstIdentifier = `0x${MyAddr.identifier}`
 
                             let current_capacity = 0
