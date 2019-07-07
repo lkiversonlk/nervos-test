@@ -72,6 +72,71 @@ loadSystemCell()
                             console.log(`now we have ${unspentCells.length} groups`)
                             console.log(unspentCells)
                             // now we have the unspent cells
+
+
+                            const capacity = 10000000
+                            const dstIdentifier = `0x${MyAddr.identifier}`
+
+                            let current_capacity = 0
+                            const inputs = []
+                            for (let i = 0; i < unspentCells.length; i ++) {
+                                const cell = unspentCells[i]
+                                inputs.push({
+                                    previousOutput: cell.outPoint,
+                                    since: '0',
+                                    args: []
+                                })
+                                current_capacity += parseInt(cell.capacity)
+
+                                if (current_capacity > capacity) {
+                                    break
+                                }
+                            }
+
+                            if (current_capacity < capacity) {
+                                throw `total capacity ${current_capacity} not enough for ${capacity}`
+                            }
+
+                            const changeOutput = {
+                                capacity: 0,
+                                lock: {
+                                    codeHash: ENCRYPT_CODE_HASH,
+                                    args: [`0x${MyAddr.identifier}`],
+                                },
+                                data: '0x'
+                            }
+                            if (current_capacity > capacity) {
+                                changeOutput.capacity = current_capacity - capacity
+                            }
+
+                            const outputs = []
+                            if (changeOutput.capacity > 0) {
+                                outputs.push(changeOutput)
+                            }
+
+                            outputs.push({
+                                capacity,
+                                lock: {
+                                    codeHash: ENCRYPT_CODE_HASH,
+                                    args: [dstIdentifier]
+                                },
+                                data: '0x'
+                            })
+                            const tx = {
+                                version: '0',
+                                deps: [ENCRYPT_CELL],
+                                inputs,
+                                outputs,
+                                witness: [{
+                                    data: [],
+                                }]
+                            }
+
+                            core.signTransaction(MyAddr)(tx)
+                                .then(signedTx => {
+                                    core.rpc.sendTransaction(signedTx)
+                                        .then(console.log)
+                                })
                         }
                     })
             })
