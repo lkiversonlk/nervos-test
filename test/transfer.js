@@ -106,7 +106,7 @@ loadSystemCell()
                                 data: '0x'
                             }
                             if (current_capacity > capacity) {
-                                changeOutput.capacity = current_capacity - capacity
+                                changeOutput.capacity = (current_capacity - capacity).toString()
                             }
 
                             const outputs = []
@@ -115,7 +115,7 @@ loadSystemCell()
                             }
 
                             outputs.push({
-                                capacity,
+                                capacity: capacity.toString(),
                                 lock: {
                                     codeHash: ENCRYPT_CODE_HASH,
                                     args: [dstIdentifier]
