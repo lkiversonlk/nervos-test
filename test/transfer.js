@@ -138,6 +138,7 @@ loadSystemCell()
 
                             core.signTransaction(MyAddr)(tx)
                                 .then(signedTx => {
+                                    console.log(signedTx)
                                     core.rpc.sendTransaction(signedTx)
                                         .then(console.log)
                                 })
