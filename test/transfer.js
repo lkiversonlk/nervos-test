@@ -29,7 +29,7 @@ loadSystemCell()
             }
         }
 
-        const MyAddr = code.generateAddress(privateKey)
+        const MyAddr = core.generateAddress(privateKey)
 
         console.log(MyAddr)
 
