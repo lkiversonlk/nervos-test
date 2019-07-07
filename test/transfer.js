@@ -134,7 +134,7 @@ loadSystemCell()
                                 }]
                             }
 
-                            console.log(JOSN.stringify(tx))
+                            console.log(JSON.stringify(tx))
 
                             core.signTransaction(MyAddr)(tx)
                                 .then(signedTx => {
