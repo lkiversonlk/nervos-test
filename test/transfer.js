@@ -76,7 +76,7 @@ loadSystemCell()
                             throw err
                         } else {
                             console.log(`now we have ${unspentCells.length} groups`)
-                            console.log(unspentCells)
+                            console.log(JSON.stringify(unspentCells))
                             // now we have the unspent cells
 
 
