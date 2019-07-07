@@ -126,12 +126,19 @@ loadSystemCell()
                                 },
                                 data: '0x'
                             })
+
+                            const witnesses = []
+                            for (let i = 0; i < inputs.length; i ++) {
+                                witnesses.push({
+                                    data: [],
+                                })
+                            }
                             const tx = {
                                 version: '0',
                                 deps: [ENCRYPT_CELL],
                                 inputs,
                                 outputs,
-                                witnesses: []
+                                witnesses
                             }
 
                             console.log(JSON.stringify(tx, null, 2))
