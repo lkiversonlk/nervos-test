@@ -6,7 +6,7 @@ const nodeUrl = 'http://localhost:8114'
 
 const core = new CKBCore(nodeUrl)
 
-const privateKey = ""
+const privateKey = require('../config.json').privateKey
 
 const loadSystemCell = async () => {
     const systemCellInfo = await core.loadSystemCell()
