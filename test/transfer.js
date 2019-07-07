@@ -124,7 +124,7 @@ loadSystemCell()
                                     codeHash: ENCRYPT_CODE_HASH,
                                     args: [dstIdentifier]
                                 },
-                                data: '0x1dd23dfdrerfdfdsf1'
+                                data: '0x000000000000000001'
                             })
 
                             const witnesses = []
