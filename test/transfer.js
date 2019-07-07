@@ -69,7 +69,9 @@ loadSystemCell()
                             console.log(err)
                             throw err
                         } else {
-                            console.log(`now we have ${cells.length} groups`)
+                            console.log(`now we have ${unspentCells.length} groups`)
+
+                            // now we have the unspent cells
                         }
                     })
             })
