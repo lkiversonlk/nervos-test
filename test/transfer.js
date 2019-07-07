@@ -125,9 +125,7 @@ loadSystemCell()
                                 deps: [ENCRYPT_CELL],
                                 inputs,
                                 outputs,
-                                witnesses: [{
-                                    data: [],
-                                }]
+                                witnesses: []
                             }
 
                             console.log(JSON.stringify(tx, null, 2))
