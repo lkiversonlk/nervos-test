@@ -118,13 +118,17 @@ loadSystemCell()
                                 outputs.push(changeOutput)
                             }
 
+                            const fs = require('fs')
+                            const data = '0x' + (fs.readFileSync('./verify')).toString('hex')
+
+                            console.log(data.length)
                             outputs.push({
                                 capacity: capacity.toString(),
                                 lock: {
                                     codeHash: ENCRYPT_CODE_HASH,
                                     args: [dstIdentifier]
                                 },
-                                data: '0x000000000000000001'
+                                data: data
                             })
 
                             const witnesses = []
