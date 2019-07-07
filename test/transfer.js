@@ -76,6 +76,7 @@ loadSystemCell()
 
                             const capacity = 1000000000
                             const dstIdentifier = `0x${MyAddr.identifier}`
+                            console.log(dstIdentifier)
 
                             let current_capacity = 0
                             const inputs = []
