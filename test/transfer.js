@@ -103,7 +103,7 @@ loadSystemCell()
                                 capacity: 0,
                                 lock: {
                                     codeHash: ENCRYPT_CODE_HASH,
-                                    args: [`0x${MyAddr.identifier}`],
+                                    args: [`0x${MyAddr.idenfitier}`],
                                 },
                                 data: '0x'
                             }
