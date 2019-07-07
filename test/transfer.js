@@ -127,7 +127,7 @@ loadSystemCell()
                                 deps: [ENCRYPT_CELL],
                                 inputs,
                                 outputs,
-                                witness: [{
+                                witnesses: [{
                                     data: [],
                                 }]
                             }
