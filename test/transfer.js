@@ -7,6 +7,7 @@ const nodeUrl = 'http://localhost:8114'
 const core = new CKBCore(nodeUrl)
 
 const privateKey = require('../config.json').privateKey
+const async = require('async')
 
 const loadSystemCell = async () => {
     const systemCellInfo = await core.loadSystemCell()
@@ -37,5 +38,40 @@ loadSystemCell()
             codeHash: ENCRYPT_CODE_HASH,
             args: [`0x${MyAddr.idenfitier}`]
         }
+
+        const lockHash = core.utils.lockScriptToHash(script)
+
+        core.rpc.getTipBlockNumber()
+            .then(number => {
+                const n = Math.ceil(number / 100)
+
+                const unspentCells = []
+                async.times(n,
+                    async (i) => {
+                        const start = 100 * i
+                        let end = 100 * (i + 1)
+                        end = end > number ? number : end
+                        if (start > end) {
+                            return
+                        } else {
+                            return core.rpc.getCellByLockHash(lockHash, start, end)
+                                .then(cells => {
+                                    if (cells.length) {
+                                        console.log(`load ${start} to ${end}, with ${cells.length} cells`)
+                                    }
+                                    unspentCells.push(cells)
+                                    return
+                                })
+                        }
+                    },
+                    (err) => {
+                        if (err) {
+                            console.log(err)
+                            throw err
+                        } else {
+                            console.log(`now we have ${cells.length} groups`)
+                        }
+                    })
+            })
     })
 
