@@ -32,7 +32,7 @@ loadSystemCell()
 
         const MyAddr = core.generateAddress(privateKey)
 
-        console.log(MyAddr)
+        // console.log(MyAddr)
 
         const script = {
             codeHash: ENCRYPT_CODE_HASH,
@@ -58,8 +58,8 @@ loadSystemCell()
                                 .then(cells => {
                                     if (cells.length) {
                                         console.log(`load ${start} to ${end}, with ${cells.length} cells`)
+                                        unspentCells.push(...cells)
                                     }
-                                    unspentCells.push(cells)
                                     return
                                 })
                         }
