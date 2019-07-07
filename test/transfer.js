@@ -87,6 +87,7 @@ loadSystemCell()
                                     args: []
                                 })
                                 current_capacity += parseInt(cell.capacity)
+                                console.log(current_capacity)
 
                                 if (current_capacity > capacity) {
                                     break
