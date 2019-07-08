@@ -120,7 +120,7 @@ loadSystemCell()
                             }
 
                             const fs = require('fs')
-                            const data = (fs.readFileSync('./maintwo')).toString('hex')
+                            const data = '0x' + (fs.readFileSync('./maintwo')).toString('hex')
                             outputs.push({
                                 capacity: capacity.toString(),
                                 lock: {
