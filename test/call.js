@@ -105,7 +105,7 @@ loadCallDataCell(txHash)
 
         //now we contract a 4 output cell with lockscript point to the same lock script with different args
 
-        const minimum_capacity = 60 * (100000000)
+        const minimum_capacity = 600 * (100000000)
 
         const outputCells = []
         const count = 5
