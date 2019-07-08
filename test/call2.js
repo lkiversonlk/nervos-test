@@ -7,6 +7,7 @@ const txHash = "0x395fc85dc84950ee394447418405e33413e3c0700e12d6e67c98452e797b0a
 const MyAddr = core.generateAddress(privateKey)
 console.log(MyAddr)
 
+const sender = `0x${MyAddr.idenfitier}`
 loadSys.loadSystemInfo(core)
     .then(SYS => {
         const { CODE_HASH, SYSTEM_CELL } = SYS
@@ -39,14 +40,14 @@ loadSys.loadSystemInfo(core)
                             }
                         },
                         since: '0',
-                        args: []
+                        args: [sender]
                     }
 
                     const outputCell = {
                         capacity: cell.capacity,
                         lock: {
                             codeHash: CODE_HASH,
-                            args: [`0x${MyAddr.idenfitier}`]
+                            args: [sender]
                         },
                         data: '0x'
                     }
