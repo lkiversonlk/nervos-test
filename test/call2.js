@@ -40,7 +40,7 @@ loadSys.loadSystemInfo(core)
                             }
                         },
                         since: '0',
-                        args: [sender]
+                        args: []
                     }
 
                     const outputCell = {
@@ -52,9 +52,17 @@ loadSys.loadSystemInfo(core)
                         data: '0x'
                     }
 
+                    const codeDepCell = {
+                        blockHash: '0x82922dde2af99e1b596085a0fd761d7981dca6640523b2a93f369f672344a645',
+                        cell: {
+                            txHash: '0xec6140660b9c3b01f758c8ceffafbd522a4d7268d3856077e90e7b7aeeca8bf8',
+                            index: '1'
+                        }
+                    }
+
                     const tx = {
                         version: '0',
-                        deps: [SYSTEM_CELL],
+                        deps: [SYSTEM_CELL, codeDepCell],
                         inputs: [inputCell],
                         outputs: [outputCell],
                         witnesses: [{ data: [] }]
