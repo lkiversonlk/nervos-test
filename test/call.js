@@ -113,7 +113,7 @@ loadCallDataCell(txHash)
             const args = []
 
             for (let j = 0; j < i; j ++) {
-                args.push('test')
+                args.push(`0x${MyAddr.idenfitier}`)
             }
 
             const output = {
