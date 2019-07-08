@@ -20,6 +20,12 @@ process.on('unhandledRejection', (reason, promise) => {
     // or whatever crash reporting service you use
 })
 
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', reason.stack || reason)
+    // Recommended: send the information to sentry.io
+    // or whatever crash reporting service you use
+})
+
 const loadCallDataCell = async (tx) => {
     return core.rpc.getTransaction(tx)
         .then(txData => {
@@ -77,7 +83,7 @@ loadCallDataCell(txHash)
             blockHash: _hash(txData.txStatus.blockHash),
             cell: {
                 txHash: _hash(txHash),
-                index: codeIndex
+                index: codeIndex.toString()
             }
         }
 
@@ -88,7 +94,7 @@ loadCallDataCell(txHash)
                 blockHash: _hash(txData.txStatus.blockHash),
                 cell: {
                     txHash: _hash(txHash),
-                    index: inputIndex
+                    index: inputIndex.toString()
                 }
             },
             since: '0',
