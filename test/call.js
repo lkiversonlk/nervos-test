@@ -161,5 +161,15 @@ loadCallDataCell(txHash)
                 }
 
                 console.log(JSON.stringify(tx, null, 2))
+
+                core.signTransaction(MyAddr)(tx)
+                    .then(signedTx => {
+                        console.log(signedTx)
+                        core.rpc.sendTransaction(signedTx)
+                            .then(console.log)
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    })
             })
     })
