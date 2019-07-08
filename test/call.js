@@ -83,7 +83,7 @@ loadCallDataCell(txHash)
 
         console.log(`depCell is ${JSON.stringify(depCell)}`)
 
-        const inputCell = {
+        const txInputCell = {
             previousOutput: {
                 blockHash: _hash(txData.txStatus.blockHash),
                 cell: {
@@ -95,7 +95,7 @@ loadCallDataCell(txHash)
             args: []
         }
 
-        console.log(`input cell is ${JSON.stringify(inputCell)}`)
+        console.log(`input cell is ${JSON.stringify(txInputCell)}`)
 
         //now we contract a 4 output cell with lockscript point to the same lock script with different args
 
@@ -146,7 +146,7 @@ loadCallDataCell(txHash)
                 outputCells.push(changedOutput)
 
                 const depCells = [depCell, ENCRYPT_CELL]
-                const inputCells = [inputCell]
+                const inputCells = [txInputCell]
                 const witnesses = []
                 for(let i = 0; i < inputCells.length; i ++ ) {
                     witnesses.push({ data: []})
