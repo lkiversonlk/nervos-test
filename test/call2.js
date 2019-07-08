@@ -40,7 +40,7 @@ loadSys.loadSystemInfo(core)
                             }
                         },
                         since: '0',
-                        args: []
+                        args: [sender]
                     }
 
                     const outputCell = {
