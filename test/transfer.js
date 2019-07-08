@@ -80,7 +80,7 @@ loadSystemCell()
                             // now we have the unspent cells
 
 
-                            const capacity = 185802469136
+                            let capacity = 185802469136
                             const dstIdentifier = `0x${MyAddr.idenfitier}`
                             console.log(dstIdentifier)
 
@@ -97,6 +97,7 @@ loadSystemCell()
                                 console.log(current_capacity)
                             }
 
+                            capacity = current_capacity
                             if (current_capacity < capacity) {
                                 throw `total capacity ${current_capacity} not enough for ${capacity}`
                             }
@@ -118,15 +119,15 @@ loadSystemCell()
                                 outputs.push(changeOutput)
                             }
 
-                            // const fs = require('fs')
-                            // const data = (fs.readFileSync('./verify')).toString('hex')
+                            const fs = require('fs')
+                            const data = (fs.readFileSync('./maintwo')).toString('hex')
                             outputs.push({
                                 capacity: capacity.toString(),
                                 lock: {
                                     codeHash: ENCRYPT_CODE_HASH,
                                     args: [dstIdentifier]
                                 },
-                                data: '0x000000000000000001'
+                                data: data
                             })
 
                             const witnesses = []
