@@ -22,7 +22,7 @@ loadSys.loadSystemInfo(core)
                 txData.transaction.outputs.forEach((cell, i) => {
                     // try to get back each cell
 
-                    if (i !== 4) {
+                    if (i !== 0) {
                         return
                     }
 
