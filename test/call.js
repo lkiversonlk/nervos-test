@@ -80,7 +80,7 @@ loadSystemCell()
                             // now we have the unspent cells
 
 
-                            let capacity = 599000000000000
+                            let capacity = 185802469136
                             const dstIdentifier = `0x${MyAddr.idenfitier}`
                             console.log(dstIdentifier)
 
@@ -97,7 +97,7 @@ loadSystemCell()
                                 console.log(current_capacity)
                             }
 
-                            // capacity = current_capacity
+                            capacity = current_capacity
                             if (current_capacity < capacity) {
                                 throw `total capacity ${current_capacity} not enough for ${capacity}`
                             }
