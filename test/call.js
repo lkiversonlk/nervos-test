@@ -121,7 +121,8 @@ loadCallDataCell(txHash)
                 lock: {
                     codeHash: _hash(codeHash),
                     args,
-                }
+                },
+                data: '0x'
             }
 
             outputCells.push(output)
