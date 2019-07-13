@@ -23,3 +23,30 @@ Nervos 数据结构
 * capacity   [string]
 * lock       [Script]
 * codeHash
+
+
+CellOutPoint 
+
+* txHash
+* index
+
+OutPoint
+
+* CellOutPoint
+* blockHash
+
+CellInput
+
+* OutPoint
+* since
+
+CellOutput
+
+* capacity
+* data
+* Script
+
+CellMeta
+
+* CellOutput
+* CellOutPoint
