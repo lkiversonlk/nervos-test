@@ -7,6 +7,8 @@ const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
 const tryCapacity = parseInt(process.argv[2])
+const data = process.argv[3]
+
 console.log(`use capacity ${tryCapacity}`)
 function deployData(data) {
     return loadSys.loadSystemInfo(core)
@@ -86,7 +88,7 @@ function deployData(data) {
 }
 
 
-deployData("0x1234")
+deployData(data)
     .then(txhash => {
         console.log(txhash)
     })
