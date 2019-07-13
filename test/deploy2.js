@@ -76,7 +76,7 @@ function depolyLock(txHash) {
                     }
 
                     const leftOutput = {
-                        capacty: (parseInt(inputCell.capacty) - jsCapacity).toString(),
+                        capacity: (parseInt(inputCell.capacity) - jsCapacity).toString(),
                         lock: {
                             codeHash: CODE_HASH,
                             args: [identifier]
