@@ -36,7 +36,7 @@ function depolyLock(txHash) {
                             JSEngineCell = cell
                             JSEngineCelli = i
                             const s = core.utils.blake2b(32, null, null, core.utils.PERSONAL)
-                            s.update(core.utils.hexToBytes(codeCell.data.replace(/^0x/, '')))
+                            s.update(core.utils.hexToBytes(JSEngineCell.data.replace(/^0x/, '')))
                             JSEngineCodeHash = s.digest('hex')
                             console.log(`js code hash is ${JSEngineCodeHash}`)
                         } else {
