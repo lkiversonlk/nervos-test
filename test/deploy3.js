@@ -62,7 +62,7 @@ function tryUnlock() {
             const tx = {
                 version: '0',
                 inputs: [InputCell],
-                deps: [EngineCell],
+                deps: [SYSTEM_CELL, EngineCell],
                 outputs: [{
                     capacity: '6000000000',
                     lock: {
