@@ -7,6 +7,13 @@ const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
 
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', reason.stack || reason)
+    // Recommended: send the information to sentry.io
+    // or whatever crash reporting service you use
+})
+
+
 function depolyLock(txHash) {
     loadSys.loadSystemInfo(core)
         .then(SYS => {
