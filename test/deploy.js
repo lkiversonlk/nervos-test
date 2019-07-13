@@ -7,6 +7,9 @@ const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
 
+
+//部署多个代码到链上
+
 function deployData(data) {
     if (data.length === 0) {
         console.log(`data length is 0`)

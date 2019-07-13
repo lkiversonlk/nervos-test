@@ -128,5 +128,5 @@ function depolyLock(txHash) {
 
 }
 
-
-depolyLock("0x2d10e052a69cf305c56d3e1a754735d7f77a8c77f62bb10b5f6cc702314c7974")
+//基于某一个transaction，拆分出两个
+depolyLock(process.argv[2])
