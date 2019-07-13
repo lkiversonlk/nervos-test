@@ -6,9 +6,6 @@ const loadCKBs = require('../lib/loadCKBs')
 const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
-const tryCapacity = parseInt(process.argv[2])
-const data = process.argv[3]
-
 console.log(`use capacity ${tryCapacity}`)
 function deployData(data) {
     return loadSys.loadSystemInfo(core)
@@ -44,7 +41,11 @@ function deployData(data) {
                         data: '0x'
                     }
 
-                    const capacityNeeded = tryCapacity
+                    let capacityNeeded = 6000000000
+
+                    if (data.length > 2) {
+                        capacityNeeded += (100000000 * (data.length - 2)/2)
+                    }
 
                     if (capacity < capacityNeeded) {
                         return Promise.reject(`need capacity ${capacityNeeded}, but only have ${capacity}`)
@@ -87,6 +88,8 @@ function deployData(data) {
         })
 }
 
+// const tryCapacity = parseInt(process.argv[2])
+const data = process.argv[2]
 
 deployData(data)
     .then(txhash => {
