@@ -57,7 +57,7 @@ function depolyLock(txHash) {
                         previouseOutput: {
                             blockHash,
                             cell: {
-                                txhash,
+                                txHash,
                                 index: inputCelli.toString()
                             }
                         },
