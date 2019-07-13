@@ -41,7 +41,7 @@ function deployData(data) {
                         data: '0x'
                     }
 
-                    const capacityNeeded = data.length
+                    const capacityNeeded = data.length + 10000
 
                     if (capacity < capacityNeeded) {
                         return Promise.reject(`need capacity ${capacityNeeded}, but only have ${capacity}`)
