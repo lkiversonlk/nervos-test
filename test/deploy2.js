@@ -9,7 +9,7 @@ const identifier = `0x${MyAddr.idenfitier}`
 
 function depolyLock(txHash) {
     loadSys.loadSystemInfo(core)
-        .then(SY => {
+        .then(SYS => {
             const { CODE_HASH, SYSTEM_CELL } = SYS
 
             return core.rpc.getTransaction(txHash)
