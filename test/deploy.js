@@ -6,7 +6,6 @@ const loadCKBs = require('../lib/loadCKBs')
 const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
-console.log(`use capacity ${tryCapacity}`)
 function deployData(data) {
     return loadSys.loadSystemInfo(core)
         .then(SYS => {
