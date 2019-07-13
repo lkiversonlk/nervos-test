@@ -18,6 +18,8 @@ function deployData(data) {
                     let capacity = 0
                     const inputs = []
                     const witnesses = []
+
+                    console.log(cells)
                     cells.forEach(cell => {
                         capacity += parseInt(cell.capacity)
                         inputs.push({
