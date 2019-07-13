@@ -21,7 +21,7 @@ function deployData(data) {
 
                     cells.forEach(cell => {
                         capacity += parseInt(cell.capacity)
-                        console.log(cell.outPoint)
+                        console.log(cell)
                         inputs.push({
                             previousOutput: cell.outPoint,
                             since: '0'
