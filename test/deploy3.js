@@ -36,6 +36,14 @@ function tryUnlock() {
         }
     }
 
+    const EngineCell = {
+        blockHash: "0x090d36583227c40ce705f826875fceee96f16cb8ce711b0de7f812bd165987fb",
+        cell: {
+            txHash: "0xe553d57acbaf228557a70a3a2c2e62af4420c7dcaf4e45fd31a1c5ff75278203",
+            index: '1'
+        }
+    }
+
     const InputCell = {
         previousOutput: {
             blockHash: "0x9b92a5329397317372495c08f6a5071ada648cc504f9b2658cd8462d22fb664e",
@@ -54,7 +62,7 @@ function tryUnlock() {
             const tx = {
                 version: '0',
                 inputs: [InputCell],
-                deps: [JSCell],
+                deps: [JSCell, EngineCell],
                 outputs: [{
                     capacity: '6000000000',
                     lock: {
