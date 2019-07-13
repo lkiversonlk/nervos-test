@@ -8,11 +8,11 @@ const MyAddr = core.generateAddress(privateKey)
 const identifier = `0x${MyAddr.idenfitier}`
 
 function deployData(data) {
-    loadSys.loadSystemInfo(core)
+    return loadSys.loadSystemInfo(core)
         .then(SYS => {
             const { CODE_HASH, SYSTEM_CELL } = SYS
 
-            loadCKBs.loadCKBs(CODE_HASH, identifier, core)
+            return loadCKBs.loadCKBs(CODE_HASH, identifier, core)
                 .then(cells => {
                     console.log(cells)
 
