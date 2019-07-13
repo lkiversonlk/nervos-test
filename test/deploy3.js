@@ -14,119 +14,67 @@ process.on('unhandledRejection', (reason, promise) => {
 })
 
 
-function tryDecodeLock(txHash) {
+// tx1: 0xe553d57acbaf228557a70a3a2c2e62af4420c7dcaf4e45fd31a1c5ff75278203
+// block: 0x090d36583227c40ce705f826875fceee96f16cb8ce711b0de7f812bd165987fb
+// [ 0: JS cell
+//   1: JS Engine Cell
+//   2: empty
+
+
+// tx2: 0x97cdfc956d1131f82001fabd40d2bf15a2cdaab06a0b0ac4adbc6c782292f21f
+// block: 0x9b92a5329397317372495c08f6a5071ada648cc504f9b2658cd8462d22fb664e
+// [ 0: empty
+//   1: ref cell
+// ]
+
+function tryUnlock() {
+    const JSCell = {
+        blockHash: "0x090d36583227c40ce705f826875fceee96f16cb8ce711b0de7f812bd165987fb",
+        cell: {
+            txHash: "0xe553d57acbaf228557a70a3a2c2e62af4420c7dcaf4e45fd31a1c5ff75278203",
+            index: '0'
+        }
+    }
+
+    const InputCell = {
+        previousOutput: {
+            blockHash: "0x9b92a5329397317372495c08f6a5071ada648cc504f9b2658cd8462d22fb664e",
+            cell: {
+                txHash: "0x97cdfc956d1131f82001fabd40d2bf15a2cdaab06a0b0ac4adbc6c782292f21f",
+                index: '1'
+            }
+        },
+        since: '0'
+    }
+
     loadSys.loadSystemInfo(core)
         .then(SYS => {
             const { CODE_HASH, SYSTEM_CELL } = SYS
 
-            return core.rpc.getTransaction(txHash)
-                .then(tx => {
-                    // console.log(JSON.stringify(tx, null, 2))
-                    const cells = tx.transaction.outputs
-                    const blockHash = tx.txStatus.blockHash
+            const tx = {
+                version: '0',
+                inputs: [InputCell],
+                deps: [JSCell],
+                outputs: [{
+                    capacity: '6000000000',
+                    lock: {
+                        codeHash: CODE_HASH,
+                        args: [identifier]
+                    },
+                    data: '0x'
+                }],
+                witnesses: [{ data: []}]
+            }
 
-                    let JSEngineCodeHash
-                    let JSEngineCell
-                    let JSEngineCelli
-
-                    let JSCell
-                    let JSCelli
-
-                    let inputCell
-                    let inputCelli
-
-                    cells.forEach((cell, i) => {
-                        if (cell.data === '0x') {
-                            inputCell = cell
-                            inputCelli = i
-                        } else if (cell.capacity === '26912400000000') {
-                            JSEngineCell = cell
-                            JSEngineCelli = i
-                            const s = core.utils.blake2b(32, null, null, core.utils.PERSONAL)
-                            s.update(core.utils.hexToBytes(JSEngineCell.data.replace(/^0x/, '')))
-                            JSEngineCodeHash = '0x' + s.digest('hex')
-                            console.log(`js code hash is ${JSEngineCodeHash}`)
-                        } else {
-                            JSCell = cell
-                            JSCelli = i
-                            console.log(`js cell`)
-                            console.log(JSCell)
-                        }
-                    })
-
-                    //把input拆成两个
-                    //其中一个lock script指向JS engine
-                    const inputs = []
-                    const outputs = []
-                    const deps = []
-
-                    inputs.push({
-                        previousOutput: {
-                            blockHash,
-                            cell: {
-                                txHash,
-                                index: inputCelli.toString()
-                            }
-                        },
-                        since: '0',
-                    })
-
-                    deps.push(SYSTEM_CELL)
-                    const jsCapacity = 6000000000
-                    const jsRefOutput = {
-                        capacity: jsCapacity.toString(),
-                        lock: {
-                            codeHash: JSEngineCodeHash,
-                            args: []
-                        },
-                        data: '0x'
-                    }
-
-                    const jsEngineDepCell = {
-                        blockHash,
-                        cell: {
-                            txHash,
-                            index: JSEngineCelli.toString()
-                        }
-                    }
-                    deps.push(jsEngineDepCell)
-
-                    const leftOutput = {
-                        capacity: (parseInt(inputCell.capacity) - jsCapacity).toString(),
-                        lock: {
-                            codeHash: CODE_HASH,
-                            args: [identifier]
-                        },
-                        data: '0x'
-                    }
-
-                    outputs.push(leftOutput)
-                    outputs.push(jsRefOutput)
-
-                    const toSubmit = {
-                        version: '0',
-                        inputs,
-                        outputs,
-                        deps,
-                        witnesses: [{
-                            data: []
-                        }]
-                    }
-
-                    console.log(JSON.stringify(toSubmit, null, 2))
-                    core.signTransaction(MyAddr)(toSubmit)
-                        .then(signedTx => {
-                            console.log(signedTx)
-                            core.rpc.sendTransaction(signedTx)
-                                .then(console.log)
-                                .catch(err => {
-                                    console.log(err)
-                                })
+            console.log(JSON.stringify(tx, null, 2))
+            core.signTransaction(MyAddr)(tx)
+                .then(signedTx => {
+                    console.log(signedTx)
+                    core.rpc.sendTransaction(signedTx)
+                        .then(console.log)
+                        .catch(err => {
+                            console.log(err)
                         })
                 })
         })
-
 }
-
-
-depolyLock("0x2d10e052a69cf305c56d3e1a754735d7f77a8c77f62bb10b5f6cc702314c7974")
