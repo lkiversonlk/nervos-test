@@ -1,5 +1,1 @@
-function test() {
-    return 0;
-}
-
-test()
+adfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdfadfasdf
