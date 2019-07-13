@@ -91,7 +91,7 @@ function deployData(data) {
 const fs = require('fs')
 const file = process.argv[2]
 
-const data = fs.readFileSync(file)
+const data = fs.readFileSync(file).toString('hex')
 
 deployData(data)
     .then(txhash => {
