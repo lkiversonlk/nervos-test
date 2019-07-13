@@ -82,6 +82,15 @@ function depolyLock(txHash) {
                         data: '0x'
                     }
 
+                    const jsEngineDepCell = {
+                        blockHash,
+                        cell: {
+                            txHash,
+                            index: JSEngineCelli.toString()
+                        }
+                    }
+                    deps.push(jsEngineDepCell)
+
                     const leftOutput = {
                         capacity: (parseInt(inputCell.capacity) - jsCapacity).toString(),
                         lock: {
