@@ -19,9 +19,9 @@ function deployData(data) {
                     const inputs = []
                     const witnesses = []
 
-                    console.log(JSON.stringify(cells, null, 2))
                     cells.forEach(cell => {
                         capacity += parseInt(cell.capacity)
+                        console.log(cell.outPoint)
                         inputs.push({
                             previousOutput: cell.outPoint,
                             since: '0'
