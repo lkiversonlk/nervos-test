@@ -14,6 +14,7 @@ function depolyLock(txHash) {
 
             return core.rpc.getTransaction(txHash)
                 .then(tx => {
+                    console.log(JSON.stringify(tx, null, 2))
                     const cells = tx.transaction.outputs
                     const blockHash = tx.tx_status.block_hash
 
