@@ -86,7 +86,7 @@ function depolyLock(txHash) {
                     outputs.push(leftOutput)
                     outputs.push(jsRefOutput)
 
-                    const tx = {
+                    const toSubmit = {
                         version: '0',
                         inputs,
                         outputs,
@@ -96,8 +96,8 @@ function depolyLock(txHash) {
                         }]
                     }
 
-                    console.log(JSON.stringify(tx, null, 2))
-                    core.signTransaction(MyAddr)(tx)
+                    console.log(JSON.stringify(toSubmit, null, 2))
+                    core.signTransaction(MyAddr)(toSubmit)
                         .then(signedTx => {
                             console.log(signedTx)
                             core.rpc.sendTransaction(signedTx)
