@@ -61,7 +61,7 @@ function depolyLock(txHash) {
                     const deps = []
 
                     inputs.push({
-                        previouseOutput: {
+                        previousOutput: {
                             blockHash,
                             cell: {
                                 txHash,
