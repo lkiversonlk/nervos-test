@@ -88,7 +88,10 @@ function deployData(data) {
 }
 
 // const tryCapacity = parseInt(process.argv[2])
-const data = process.argv[2]
+const fs = require('fs')
+const file = process.argv[2]
+
+const data = fs.readFileSync(file)
 
 deployData(data)
     .then(txhash => {
