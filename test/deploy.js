@@ -37,7 +37,8 @@ function deployData(data) {
                         lock: {
                             codeHash: CODE_HASH,
                             args: [identifier]
-                        }
+                        },
+                        data: '0x'
                     }
 
                     const capacityNeeded = data.length
