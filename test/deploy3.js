@@ -59,6 +59,14 @@ function tryUnlock() {
         }
     }
 
+    const emptyCell = {
+        blockHash: "0x51900126ae351069bdb5769e1e030752914b148faddfecb542bb4787d9795b44",
+        cell: {
+            txHash: "0x3ba82f1a1cee24c59213638f6d3af7c6ef9ff2243ba2b3924cc090fa16e36661",
+            index: '0'
+        }
+    }
+
     const InputCell = {
         previousOutput: {
             blockHash: "0x51900126ae351069bdb5769e1e030752914b148faddfecb542bb4787d9795b44",
@@ -70,6 +78,8 @@ function tryUnlock() {
         since: '0'
     }
 
+
+
     loadSys.loadSystemInfo(core)
         .then(SYS => {
             const { CODE_HASH, SYSTEM_CELL } = SYS
@@ -77,7 +87,7 @@ function tryUnlock() {
             const tx = {
                 version: '0',
                 inputs: [InputCell],
-                deps: [JSCell, EngineCell],
+                deps: [emptyCell, JSCell, EngineCell],
                 outputs: [{
                     capacity: '6000000000',
                     lock: {
