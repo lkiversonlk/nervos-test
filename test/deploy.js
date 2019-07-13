@@ -9,7 +9,7 @@ loadSys.loadSystemInfo(core)
 .then(SYS => {
     const { CODE_HASH, SYSTEM_CELL } = SYS
 
-    loadCKBs(CODE_HASH, `0x${MyAddr.idenfitier}`, core)
+    loadCKBs.loadCKBs(CODE_HASH, `0x${MyAddr.idenfitier}`, core)
         .then(cells => {
             console.log(cells)
         })
