@@ -74,7 +74,7 @@ function depolyLock(txHash) {
                     deps.push(SYSTEM_CELL)
                     const jsCapacity = 6000000000
                     const jsRefOutput = {
-                        capacty: jsCapacity.toString(),
+                        capacity: jsCapacity.toString(),
                         lock: {
                             codeHash: JSEngineCodeHash,
                             args: []
