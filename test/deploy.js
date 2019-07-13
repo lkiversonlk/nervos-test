@@ -49,7 +49,7 @@ function deployData(data) {
                         const d = data[i]
                         let cellCapacity = 6000000000
                         if (d.length > 2) {
-                            cellCapacity += (100000000 * (data.length - 2)/2)
+                            cellCapacity += (100000000 * (d.length - 2)/2)
                         }
                         outputs.push({
                             capacity: cellCapacity.toString(),
