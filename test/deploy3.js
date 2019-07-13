@@ -78,3 +78,5 @@ function tryUnlock() {
                 })
         })
 }
+
+tryUnlock()
