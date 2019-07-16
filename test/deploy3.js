@@ -5,7 +5,7 @@ const privateKey = require('../config.json').privateKey
 const loadCKBs = require('../lib/loadCKBs')
 const MyAddr = core.generateAddress(privateKey)
 
-const identifier = `0x${MyAddr.idenfitier}`
+const identifier = `0x${MyAddr.identifier}`
 
 process.on('unhandledRejection', (reason, promise) => {
     console.log('Unhandled Rejection at:', reason.stack || reason)
