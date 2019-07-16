@@ -6,8 +6,7 @@ const loadCKBs = require('../lib/loadCKBs')
 const MyAddr = core.generateAddress(privateKey)
 
 const identifier = `0x${MyAddr.idenfitier}`
-
-
+console.log(MyAddr)
 //部署多个代码到链上
 
 function deployData(data) {
